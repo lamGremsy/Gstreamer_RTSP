@@ -55,6 +55,8 @@ add_executable(rtsp_videotestsrc SourceCode/Stream/rtsp_videotestsrc.cpp)
 
 add_executable(rtsp_twostream_record SourceCode/Stream_record/rtsp_twostream_record.cpp)
 
+add_executable(rtsp_twostream_record_capture SourceCode/Stream_record_capture/rtsp_twostream_record_capture.cpp)
+
 
 
 
@@ -64,4 +66,6 @@ target_link_libraries(rtsp_twostream ${GST_DEPS} ${GLIB_DEPS} ${GSTLIBS_LIBRARIE
 target_link_libraries(rtsp_videotestsrc ${GST_DEPS} ${GLIB_DEPS} ${GSTLIBS_LIBRARIES})
 
 target_link_libraries(rtsp_twostream_record ${GST_DEPS} ${GLIB_DEPS} ${GSTLIBS_LIBRARIES})
+
+target_link_libraries(rtsp_twostream_record_capture ${GST_DEPS} ${GLIB_DEPS} ${GSTLIBS_LIBRARIES})
 
