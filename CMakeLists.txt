@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 3.8)
 project(Gstreamer_RTSP)
+
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+
 find_package(PkgConfig REQUIRED)
 
 pkg_check_modules(GSTLIBS REQUIRED
@@ -25,6 +28,9 @@ include_directories (${GTK_INCLUDE_DIRS})
 include_directories(${GLIB_INCLUDE_DIRS})
 include_directories(${GSTREAMER_INCLUDE_DIRS} ${GSTREAMER_BASE_INCLUDE_DIRS})
 include_directories(${GSTREAMER_RTSP_INCLUDE_DIRS})
+
+find_package(Cairo)
+include_directories(${CAIRO_INCLUDE_DIRS})
 
 set(GLIB_DEPS
     pcre
@@ -57,6 +63,8 @@ add_executable(rtsp_twostream_record SourceCode/Stream_record/rtsp_twostream_rec
 
 add_executable(rtsp_twostream_record_capture SourceCode/Stream_record_capture/rtsp_twostream_record_capture.cpp)
 add_executable(rtsp_twocamera_multipleMode SourceCode/Stream_record_capture/rtsp_twocamera_multipleMode.cpp)
+add_executable(rtsp_cairooverlay SourceCode/Stream_record_capture/rtsp_cairooverlay.cpp)
+add_executable(rtsp_twocameramix_cairo SourceCode/Stream_record_capture/rtsp_twocameramix_cairo.cpp)
 
 
 
@@ -70,4 +78,6 @@ target_link_libraries(rtsp_twostream_record ${GST_DEPS} ${GLIB_DEPS} ${GSTLIBS_L
 
 target_link_libraries(rtsp_twostream_record_capture ${GST_DEPS} ${GLIB_DEPS} ${GSTLIBS_LIBRARIES})
 target_link_libraries(rtsp_twocamera_multipleMode ${GST_DEPS} ${GLIB_DEPS} ${GSTLIBS_LIBRARIES})
+target_link_libraries(rtsp_cairooverlay ${GST_DEPS} ${GLIB_DEPS} ${GSTLIBS_LIBRARIES} ${CAIRO_LIBRARIES})
+target_link_libraries(rtsp_twocameramix_cairo ${GST_DEPS} ${GLIB_DEPS} ${GSTLIBS_LIBRARIES} ${CAIRO_LIBRARIES})
 
