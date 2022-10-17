@@ -123,7 +123,8 @@ ctx_free (MyContext * ctx)
   gst_object_unref (ctx->vid_appsink );
   g_free (ctx);
   streaming_640 = false;
-  mode_stream=0;
+  if (!streaming_640 && !streaming_320)
+    mode_stream=0;
 }
 
 static void
@@ -175,7 +176,8 @@ ctx_free1 (MyContext * ctx)
   gst_object_unref (ctx->vid_appsink );
   g_free (ctx);
   streaming_320 = false;
-  mode_stream=0;
+  if (!streaming_640 && !streaming_320)
+    mode_stream=0;
 }
 
 static void

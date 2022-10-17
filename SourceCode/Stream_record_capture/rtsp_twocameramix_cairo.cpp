@@ -412,7 +412,7 @@ media_configure1 (GstRTSPMediaFactory * factory, GstRTSPMedia * media, gpointer 
 
     g_object_set (G_OBJECT(filter_320), "caps", caps_320, NULL);
     g_object_set (G_OBJECT(filter_320_mix), "caps", caps_320_mix, NULL);
-    g_object_set (videomixer_640, "background", 1, NULL);
+    g_object_set (videomixer_320, "background", 1, NULL);
     g_object_set (x264enc_320, "tune", 4, NULL);
     g_object_set (x264enc_320, "speed-preset", 2, NULL);
     g_object_set (appsink_320, "drop", 1, NULL);
